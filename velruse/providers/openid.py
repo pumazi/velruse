@@ -120,6 +120,8 @@ class OpenIDConsumer(object):
                  context=AuthenticationComplete):
         self.openid_store = storage
         self.name = name
+        if _type is None:
+            _type = name
         self.type = _type
         self.context = context
         self.realm_override = realm
