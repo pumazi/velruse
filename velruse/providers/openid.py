@@ -17,6 +17,7 @@ from velruse.api import (
     AuthenticationDenied,
     register_provider,
 )
+from velruse.events import with_events, AfterLogin, BeforeLogin
 from velruse.exceptions import MissingParameter
 from velruse.exceptions import ThirdPartyFailure
 
@@ -180,6 +181,7 @@ class OpenIDConsumer(object):
 
         """
 
+    @with_events(before=BeforeLogin, after=AfterLogin)
     def login(self, request):
         log.debug('Handling OpenID login')
 
